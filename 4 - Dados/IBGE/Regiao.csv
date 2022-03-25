@@ -1,0 +1,28 @@
+﻿Região;UF;Estado;Código
+Norte;RO;Rondônia;11
+Norte;AC;Acre;12
+Norte;AM;Amazonas;13
+Norte;RR;Roraima;14
+Norte;PA;Pará;15
+Norte;AP;Amapá;16
+Norte;TO;Tocantins;17
+Nordeste;MA;Maranhão;21
+Nordeste;PI;Piauí;22
+Nordeste;CE;Ceará;23
+Nordeste;RN;Rio Grande do Norte;24
+Nordeste;PB;Paraiba;25
+Nordeste;PE;Pernambuco;26
+Nordeste;AL;Alagoas;27
+Nordeste;SE;Sergipe;28
+Nordeste;BA;Bahia;29
+Sudeste;MG;Minas Gerais;31
+Sudeste;ES;Espirito Santo;32
+Sudeste;RJ;Rio de Janeiro;33
+Sudeste;SP;São Paulo;35
+Sul;PR;Paraná;41
+Sul;SC;Santa Catarina;42
+Sul;RS;Rio Grande do Sul;43
+Centro-oeste;MS;Mato Grosso do Sul;50
+Centro-oeste;MT;Mato Grosso;51
+Centro-oeste;GO;Goias;52
+Centro-oeste;DF;Distrito federal;53
