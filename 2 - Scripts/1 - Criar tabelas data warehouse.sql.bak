@@ -1,6 +1,6 @@
 
 CREATE TABLE dim_data (
-				sk_ano SERIAL PRIMARY KEY,
+				sk_ano INTEGER PRIMARY KEY,
                 nk_ano CHAR(4) NOT NULL,
                 etl_dtInicio DATE NOT NULL,
                 etl_dtFim DATE NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE dim_data (
 );
 
 CREATE TABLE dim_local (
-				sk_municipio SERIAL PRIMARY KEY,
+				sk_municipio INTEGER PRIMARY KEY,
                 nk_municipio CHAR(7) NOT NULL,
                 estado VARCHAR(50) NOT NULL,
                 nome_municipio VARCHAR(80) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE dim_local (
 );
 
 CREATE TABLE dim_adm (
-				sk_adm SERIAL PRIMARY KEY,
+				sk_adm INTEGER PRIMARY KEY,
                 nk_adm CHAR(6) NOT NULL,
                 local VARCHAR(10) NOT NULL,
                 dep_administrativa VARCHAR(10) NOT NULL,

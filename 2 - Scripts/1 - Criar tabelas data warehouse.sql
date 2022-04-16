@@ -42,3 +42,4 @@ CREATE TABLE ft_matricula (
 INSERT INTO dim_data VALUES (0,'N/A','1900-01-01','2199-12-31',0);
 INSERT INTO dim_local VALUES (0,'N/A','N/A','N/A','N/A','1900-01-01','2199-12-31',0);
 INSERT INTO dim_adm VALUES (0,'N/A','N/A','N/A','1900-01-01','2199-12-31',0);
+INSERT INTO ft_matricula VALUES (0,0,0,0,0);
