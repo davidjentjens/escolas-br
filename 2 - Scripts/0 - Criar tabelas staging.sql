@@ -12,3 +12,10 @@ CREATE TABLE ibge (
   nome_municipio VARCHAR(100),
   populacao INTEGER
 );
+
+CREATE TABLE regiao (
+  regiao VARCHAR(15),
+  uf CHAR(2),
+  estado VARCHAR(30),
+  prefixo INTEGER
+);
