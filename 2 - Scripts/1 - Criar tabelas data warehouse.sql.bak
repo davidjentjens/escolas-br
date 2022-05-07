@@ -33,12 +33,30 @@ CREATE TABLE ft_matricula (
                 sk_ano INTEGER NOT NULL,
                 sk_municipio INTEGER NOT NULL,
                 qtd_matriculas INTEGER NOT NULL,
-                populacao INTEGER NOT NULL,
 				FOREIGN KEY (sk_ano) REFERENCES dim_data (sk_ano),
 				FOREIGN KEY (sk_municipio)REFERENCES dim_local (sk_municipio),
 				FOREIGN KEY (sk_adm) REFERENCES dim_adm (sk_adm)
 );
 
+CREATE TABLE public.ft_populacao (
+                sk_ano INTEGER NOT NULL,
+                sk_municipio INTEGER NOT NULL DEFAULT nextval('public.dim_local_sk_municipio_seq'),
+                populacao VARCHAR NOT NULL,
+				FOREIGN KEY (sk_ano) REFERENCES dim_data (sk_ano),
+				FOREIGN KEY (sk_municipio)REFERENCES dim_local (sk_municipio)
+);
+
 INSERT INTO dim_data VALUES (0,'N/A','1900-01-01','2199-12-31',0);
 INSERT INTO dim_local VALUES (0,'N/A','N/A','N/A','N/A','1900-01-01','2199-12-31',0);
 INSERT INTO dim_adm VALUES (0,'N/A','N/A','N/A','1900-01-01','2199-12-31',0);
+INSERT INTO ft_matricula VALUES (0,0,0,0);
+INSERT INTO ft_populacao VALUES (0,0,0);
+
+
+
+
+
+
+
+
+
