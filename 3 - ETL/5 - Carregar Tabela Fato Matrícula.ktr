@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>6 - Carregar Tabela Fato Alt</name>
+    <name>5 - Carregar Tabela Fato Matrícula</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -545,16 +545,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Database lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database lookup</from>
-      <to>Lookup_adm</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Lookup_adm</from>
       <to>Lookup_data</to>
       <enabled>Y</enabled>
@@ -572,6 +562,11 @@
     <hop>
       <from>Select values</from>
       <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Lookup_adm</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -728,60 +723,6 @@ FROM "public".inep
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>st_escola-br</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>ibge</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>cod_municipio</name>
-        <field>cod_municipio</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>ano</name>
-        <field>ano</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>populacao</name>
-        <rename>populacao</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -950,18 +891,19 @@ FROM "public".inep
     <fields>
       <field>
         <name>qtd_matriculas</name>
-      </field>
-      <field>
-        <name>populacao</name>
+        <rename/>
       </field>
       <field>
         <name>sk_adm</name>
+        <rename/>
       </field>
       <field>
         <name>sk_ano</name>
+        <rename/>
       </field>
       <field>
         <name>sk_municipio</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1061,10 +1003,6 @@ FROM "public".inep
       <field>
         <column_name>qtd_matriculas</column_name>
         <stream_name>qtd_matriculas</stream_name>
-      </field>
-      <field>
-        <column_name>populacao</column_name>
-        <stream_name>populacao</stream_name>
       </field>
       <field>
         <column_name>sk_adm</column_name>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>1 - IBEG para Staging</name>
+    <name>1 - IBGE para Staging</name>
     <description/>
     <extended_description/>
     <trans_version/>
