@@ -195,7 +195,7 @@
   <table id="TAB45" populated="true" UUID="dbd9205a-cd6d-4c78-9892-26200d5f53c1" name="ft_populacao" objectType="TABLE" physicalName="ft_populacao" >
    <remarks></remarks>
    <folder id="FOLTAB451" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL46" populated="true" UUID="40acb6f1-5933-44bb-9b50-a4fb190f3e48" autoIncrement="true" autoIncrementSequenceName="dim_data_sk_ano_seq" defaultValue="" name="sk_ano" nullable="0" physicalName="sk_ano" precision="0" referenceCount="1" scale="0" source-column-ref="COL32" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL46" populated="true" UUID="40acb6f1-5933-44bb-9b50-a4fb190f3e48" autoIncrement="false" autoIncrementSequenceName="dim_data_sk_ano_seq" defaultValue="" name="sk_ano" nullable="0" physicalName="sk_ano" precision="0" referenceCount="1" scale="0" source-column-ref="COL32" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL47" populated="true" UUID="86857402-f436-43f6-a1f9-22c5effd6932" autoIncrement="true" autoIncrementSequenceName="dim_local_sk_municipio_seq" defaultValue="" name="sk_municipio" nullable="0" physicalName="sk_municipio" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -224,6 +224,10 @@
    <relationship id="REL54" populated="true" UUID="312b2fa6-04b8-43e0-885c-aaa1e37994ae" deferrability="7" deleteRule="3" fk-table-ref="TAB39" fkCardinality="7" identifying="false" name="dim_data_ft_matricula_fk" physicalName="dim_data_ft_matricula_fk" pk-table-ref="TAB31" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP55" populated="true" UUID="da6fd0df-8ebd-40cd-a189-d34522c6020f" fk-column-ref="COL41" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL32" />
    </relationship>
+   <relationship id="REL56" populated="true" UUID="08b50e0c-22b9-456f-8fb0-f29b49bc1e1f" deferrability="7" deleteRule="3" fk-table-ref="TAB31" fkCardinality="7" identifying="false" name="ft_populacao_dim_data_fk" physicalName="ft_populacao_dim_data_fk" pk-table-ref="TAB45" pkCardinality="2" updateRule="3" >
+   </relationship>
+   <relationship id="REL57" populated="true" UUID="030182ae-940b-4d17-b326-bf6756e7f841" deferrability="7" deleteRule="3" fk-table-ref="TAB20" fkCardinality="7" identifying="false" name="ft_populacao_dim_local_fk" physicalName="ft_populacao_dim_local_fk" pk-table-ref="TAB45" pkCardinality="2" updateRule="3" >
+   </relationship>
   </relationships>
  </target-database>
  <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
@@ -238,6 +242,8 @@
   <table-link relationship-ref="REL50" pkConnection="0.44493392070484583" fkConnection="0.43956043956043955" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL54" pkConnection="0.5056179775280899" fkConnection="0.48292682926829267" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL52" pkConnection="0.6028368794326241" fkConnection="0.5050505050505051" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL56" pkConnection="0.5915492957746479" fkConnection="0.43434343434343436" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL57" pkConnection="0.5161290322580645" fkConnection="0.46511627906976744" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
