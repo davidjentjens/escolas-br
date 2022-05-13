@@ -541,32 +541,32 @@
   <order>
     <hop>
       <from>Carrega Tabela INEP</from>
-      <to>Sort rows</to>
+      <to>Ordena</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup_adm</from>
-      <to>Lookup_data</to>
+      <from>Lookup sk_adm</from>
+      <to>Lookup sk_ano</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup_data</from>
-      <to>Lookup_local</to>
+      <from>Lookup sk_ano</from>
+      <to>Lookup sk_municipio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup_local</from>
-      <to>Select values</to>
+      <from>Lookup sk_municipio</from>
+      <to>Select valores relevantes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Table output</to>
+      <from>Select valores relevantes</from>
+      <to>Carrega tabela fato matricula</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Lookup_adm</to>
+      <from>Ordena</from>
+      <to>Lookup sk_adm</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -728,7 +728,7 @@ FROM "public".inep
     </GUI>
   </step>
   <step>
-    <name>Lookup_adm</name>
+    <name>Lookup sk_adm</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -776,13 +776,13 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>288</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Lookup_data</name>
+    <name>Lookup sk_ano</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -824,13 +824,13 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>400</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Lookup_local</name>
+    <name>Lookup sk_municipio</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -872,13 +872,13 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>528</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
+    <name>Select valores relevantes</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -916,13 +916,13 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>128</yloc>
+      <xloc>528</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort rows</name>
+    <name>Ordena</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -972,7 +972,7 @@ FROM "public".inep
     </GUI>
   </step>
   <step>
-    <name>Table output</name>
+    <name>Carrega tabela fato matricula</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1026,8 +1026,8 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>128</yloc>
+      <xloc>352</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

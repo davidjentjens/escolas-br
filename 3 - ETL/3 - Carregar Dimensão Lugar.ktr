@@ -540,53 +540,53 @@
   </connection>
   <order>
     <hop>
-      <from>CSV file input</from>
-      <to>Sort rows 2</to>
+      <from>Importa Região.csv</from>
+      <to>Ordena</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2</from>
+      <from>Ordena</from>
       <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Table input</from>
-      <to>Sort rows 3</to>
+      <from>Lê tabela INEP do staging</from>
+      <to>Ordena linhas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 3</from>
-      <to>Unique rows</to>
+      <from>Ordena linhas</from>
+      <to>Elimina duplicatas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Strings cut</from>
+      <from>Extrai prefixo do cod_municipio</from>
       <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Merge join</from>
-      <to>Select values</to>
+      <to>Seleciona valores relevantes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>Replace in string</to>
+      <from>Elimina duplicatas</from>
+      <to>Tratar nome municipio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Strings cut</to>
+      <from>Tratar nome municipio</from>
+      <to>Extrai prefixo do cod_municipio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Dimension lookup/update</to>
+      <from>Seleciona valores relevantes</from>
+      <to>Atualiza dimensão Lugar</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CSV file input</name>
+    <name>Importa Região.csv</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -671,7 +671,7 @@
     </GUI>
   </step>
   <step>
-    <name>Dimension lookup/update</name>
+    <name>Atualiza dimensão Lugar</name>
     <type>DimensionLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -734,8 +734,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>112</yloc>
+      <xloc>720</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -751,8 +751,8 @@
       <schema_name/>
     </partitioning>
     <join_type>INNER</join_type>
-    <step1>Strings cut</step1>
-    <step2>Sort rows 2</step2>
+    <step1>Extrai prefixo do cod_municipio</step1>
+    <step2>Ordena</step2>
     <keys_1>
       <key>preffix</key>
     </keys_1>
@@ -768,13 +768,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>608</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Replace in string</name>
+    <name>Tratar nome municipio</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -819,13 +819,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>64</yloc>
+      <xloc>368</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
+    <name>Seleciona valores relevantes</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -838,18 +838,23 @@
     <fields>
       <field>
         <name>cod_municipio</name>
+        <rename/>
       </field>
       <field>
         <name>nome_municipio</name>
+        <rename/>
       </field>
       <field>
         <name>﻿Região</name>
+        <rename/>
       </field>
       <field>
         <name>UF</name>
+        <rename/>
       </field>
       <field>
         <name>Estado</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -868,7 +873,7 @@
     </GUI>
   </step>
   <step>
-    <name>Sort rows 2</name>
+    <name>Ordena</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -904,13 +909,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>400</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort rows 3</name>
+    <name>Ordena linhas</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -954,13 +959,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>64</yloc>
+      <xloc>192</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Strings cut</name>
+    <name>Extrai prefixo do cod_municipio</name>
     <type>StringCut</type>
     <description/>
     <distribute>Y</distribute>
@@ -999,13 +1004,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>464</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table input</name>
+    <name>Lê tabela INEP do staging</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1085,13 +1090,13 @@ FROM "public".ibge
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
+      <xloc>96</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
+    <name>Elimina duplicatas</name>
     <type>Unique</type>
     <description/>
     <distribute>Y</distribute>
@@ -1120,7 +1125,7 @@ FROM "public".ibge
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>272</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>

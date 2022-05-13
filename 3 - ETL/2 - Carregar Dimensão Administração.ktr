@@ -539,33 +539,33 @@
   </connection>
   <order>
     <hop>
-      <from>Table input</from>
-      <to>Sort rows</to>
+      <from>Lê tabela INEP do staging</from>
+      <to>Ordena linhas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Unique rows</to>
+      <from>Ordena linhas</from>
+      <to>Elimina duplicatas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>Add sequence</to>
+      <from>Elimina duplicatas</from>
+      <to>Cria nk_adm</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add sequence</from>
-      <to>Select values</to>
+      <from>Cria nk_adm</from>
+      <to>Seleciona valores relevantes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Dimension lookup/update</to>
+      <from>Seleciona valores relevantes</from>
+      <to>Atualiza dimensão adm</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add sequence</name>
+    <name>Cria nk_adm</name>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
@@ -600,7 +600,7 @@
     </GUI>
   </step>
   <step>
-    <name>Dimension lookup/update</name>
+    <name>Atualiza dimensão adm</name>
     <type>DimensionLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -659,13 +659,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>128</yloc>
+      <xloc>592</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
+    <name>Seleciona valores relevantes</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -744,7 +744,7 @@
     </GUI>
   </step>
   <step>
-    <name>Sort rows</name>
+    <name>Ordena linhas</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -788,13 +788,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>256</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table input</name>
+    <name>Lê tabela INEP do staging</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -879,7 +879,7 @@ FROM "public".inep
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
+    <name>Elimina duplicatas</name>
     <type>Unique</type>
     <description/>
     <distribute>Y</distribute>
@@ -912,7 +912,7 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>352</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>

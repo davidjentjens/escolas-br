@@ -541,42 +541,42 @@
   <order>
     <hop>
       <from>Carrega Tabela INEP</from>
-      <to>Sort rows</to>
+      <to>Ordena</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Select values 2</to>
+      <from>Ordena</from>
+      <to>Seleciona valores relevantes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
-      <to>Unique rows</to>
+      <from>Seleciona valores relevantes</from>
+      <to>Elimina duplicatas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>Database lookup</to>
+      <from>Elimina duplicatas</from>
+      <to>Carrega informação de população</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database lookup 2</from>
-      <to>Database lookup 3</to>
+      <from>Lookup sk_ano</from>
+      <to>Lookup sk_municipio</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database lookup 3</from>
-      <to>Select values 3</to>
+      <from>Lookup sk_municipio</from>
+      <to>Seleciona valores relevantes </to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>Table output</to>
+      <from>Seleciona valores relevantes </from>
+      <to>Carrega fato população</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database lookup</from>
-      <to>Database lookup 2</to>
+      <from>Carrega informação de população</from>
+      <to>Lookup sk_ano</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -738,7 +738,7 @@ FROM "public".inep
     </GUI>
   </step>
   <step>
-    <name>Database lookup</name>
+    <name>Carrega informação de população</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -786,13 +786,185 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
+      <xloc>544</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort rows</name>
+    <name>Lookup sk_ano</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>dw_escola-br</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_data</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>ano</name>
+        <field>nk_ano</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sk_ano</name>
+        <rename>sk_ano</rename>
+        <default/>
+        <type>None</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Lookup sk_municipio</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>dw_escola-br</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>dim_local</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>cod_municipio</name>
+        <field>nk_municipio</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>sk_municipio</name>
+        <rename>sk_municipio</rename>
+        <default/>
+        <type>None</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Seleciona valores relevantes</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>cod_municipio</name>
+        <rename/>
+      </field>
+      <field>
+        <name>ano</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Seleciona valores relevantes </name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>populacao</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sk_ano</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sk_municipio</name>
+        <rename/>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Ordena</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -842,7 +1014,7 @@ FROM "public".inep
     </GUI>
   </step>
   <step>
-    <name>Table output</name>
+    <name>Carrega fato população</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -892,13 +1064,13 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>128</yloc>
+      <xloc>368</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
+    <name>Elimina duplicatas</name>
     <type>Unique</type>
     <description/>
     <distribute>Y</distribute>
@@ -931,179 +1103,7 @@ FROM "public".inep
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>cod_municipio</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ano</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>dw_escola-br</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_data</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>ano</name>
-        <field>nk_ano</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>sk_ano</name>
-        <rename>sk_ano</rename>
-        <default/>
-        <type>None</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup 3</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>dw_escola-br</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>dim_local</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>cod_municipio</name>
-        <field>nk_municipio</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>sk_municipio</name>
-        <rename>sk_municipio</rename>
-        <default/>
-        <type>None</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>populacao</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sk_ano</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sk_municipio</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
+      <xloc>384</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>

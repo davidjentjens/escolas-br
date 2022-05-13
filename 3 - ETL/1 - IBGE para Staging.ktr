@@ -490,22 +490,22 @@
   <order>
     <hop>
       <from>Lê dados IBGE</from>
-      <to>Filter rows</to>
+      <to>Filtra registros dos municipios</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Select values</to>
+      <from>Filtra registros dos municipios</from>
+      <to>Seleciona valores relevantes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
+      <from>Seleciona valores relevantes</from>
       <to>tIBGE</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Filter rows</name>
+    <name>Filtra registros dos municipios</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -515,7 +515,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Select values</send_true_to>
+    <send_true_to>Seleciona valores relevantes</send_true_to>
     <send_false_to/>
     <compare>
       <condition>
@@ -701,7 +701,7 @@
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
+    <name>Seleciona valores relevantes</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -726,6 +726,7 @@
       </field>
       <field>
         <name>populacao</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -738,7 +739,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>432</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -782,7 +783,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>576</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>

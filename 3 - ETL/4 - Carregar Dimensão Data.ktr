@@ -539,13 +539,13 @@
   </connection>
   <order>
     <hop>
-      <from>Table input</from>
-      <to>Dimension lookup/update</to>
+      <from>Lê ano da tabela INEP do staging</from>
+      <to>Atualiza dimensão Data</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Dimension lookup/update</name>
+    <name>Atualiza dimensão Data</name>
     <type>DimensionLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -596,13 +596,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>352</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table input</name>
+    <name>Lê ano da tabela INEP do staging</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
